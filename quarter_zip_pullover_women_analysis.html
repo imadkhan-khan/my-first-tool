@@ -1,0 +1,207 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.wrap { padding: 1rem 0 2rem; }
+.product-hero { display: flex; gap: 1rem; align-items: flex-start; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
+.product-icon { width: 72px; height: 72px; border-radius: var(--border-radius-md); background: #EAF3DE; border: 0.5px solid #97C459; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.product-icon svg { width: 36px; height: 36px; }
+.product-name { font-size: 18px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.product-sub { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 10px; }
+.pill { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 500; margin: 2px 3px 2px 0; }
+.pill-green { background: #EAF3DE; border: 0.5px solid #97C459; color: #3B6D11; }
+.pill-blue { background: #E6F1FB; border: 0.5px solid #85B7EB; color: #185FA5; }
+.pill-amber { background: #FAEEDA; border: 0.5px solid #EF9F27; color: #854F0B; }
+.pill-red { background: #FCEBEB; border: 0.5px solid #F09595; color: #A32D2D; }
+.pill-gray { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 1rem; }
+.metric { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem; }
+.metric .lbl { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.metric .val { font-size: 22px; font-weight: 500; color: var(--color-text-primary); line-height: 1.1; }
+.metric .hint { font-size: 11px; color: var(--color-text-tertiary); margin-top: 4px; }
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 10px; }
+.card-label { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+.card p { font-size: 13px; color: var(--color-text-primary); line-height: 1.6; }
+.trend-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.trend-row:last-child { border-bottom: none; }
+.trend-name { font-size: 13px; color: var(--color-text-secondary); width: 110px; flex-shrink: 0; }
+.trend-bar-bg { flex: 1; height: 5px; background: var(--color-background-secondary); border-radius: 3px; overflow: hidden; }
+.trend-bar-fill { height: 100%; border-radius: 3px; }
+.trend-score { font-size: 13px; font-weight: 500; color: var(--color-text-primary); width: 32px; text-align: right; flex-shrink: 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.list-item { display: flex; gap: 8px; padding: 6px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 13px; color: var(--color-text-primary); line-height: 1.5; }
+.list-item:last-child { border-bottom: none; }
+.dot-green { width: 7px; height: 7px; border-radius: 50%; background: #639922; flex-shrink: 0; margin-top: 5px; }
+.dot-red { width: 7px; height: 7px; border-radius: 50%; background: #E24B4A; flex-shrink: 0; margin-top: 5px; }
+.dot-gray { width: 7px; height: 7px; border-radius: 50%; background: var(--color-text-tertiary); flex-shrink: 0; margin-top: 5px; }
+.section-head { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin: 1.25rem 0 0.5rem; display: flex; align-items: center; gap: 6px; }
+.section-head::before { content: ''; display: inline-block; width: 4px; height: 14px; background: var(--color-border-secondary); border-radius: 2px; }
+.fab-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.fab-pill { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 6px 10px; font-size: 12px; color: var(--color-text-primary); }
+.fab-pill .fab-name { font-weight: 500; margin-bottom: 2px; }
+.fab-pill .fab-desc { font-size: 11px; color: var(--color-text-secondary); }
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 1rem 0; }
+.ask-btn { margin-top: 1.25rem; padding: 10px 16px; font-size: 13px; cursor: pointer; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-primary); width: 100%; text-align: left; }
+.ask-btn:hover { background: var(--color-background-secondary); }
+@media (max-width: 500px) { .two-col { grid-template-columns: 1fr; } .metrics { grid-template-columns: 1fr 1fr; } }
+</style>
+
+<div class="wrap">
+  <div class="product-hero">
+    <div class="product-icon">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 10 C8 10 12 8 18 8 C24 8 28 10 28 10 L30 16 L24 14 L24 28 L12 28 L12 14 L6 16 Z" fill="#97C459" stroke="#3B6D11" stroke-width="1"/>
+        <line x1="18" y1="8" x2="18" y2="15" stroke="#3B6D11" stroke-width="1.5"/>
+        <circle cx="18" cy="15" r="1.5" fill="#3B6D11"/>
+      </svg>
+    </div>
+    <div style="flex:1;">
+      <div class="product-name">Quarter Zip Pullover — Women</div>
+      <div class="product-sub">Women's Tops &middot; Athleisure / Casual Fashion</div>
+      <span class="pill pill-green">Trending 2026</span>
+      <span class="pill pill-blue">Rising demand</span>
+      <span class="pill pill-amber">Seasonal peak: Fall/Winter</span>
+      <span class="pill pill-gray">All-season capable</span>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="lbl">Trend score</div>
+      <div class="val">88<span style="font-size:14px;font-weight:400;color:var(--color-text-tertiary)">/100</span></div>
+      <div class="hint">2026 breakout item</div>
+    </div>
+    <div class="metric">
+      <div class="lbl">Est. Amazon listings</div>
+      <div class="val">5,000+</div>
+      <div class="hint">Highly competitive</div>
+    </div>
+    <div class="metric">
+      <div class="lbl">Lowest price</div>
+      <div class="val">$15</div>
+      <div class="hint">Budget fleece styles</div>
+    </div>
+    <div class="metric">
+      <div class="lbl">Avg. price</div>
+      <div class="val">$35</div>
+      <div class="hint">Mid-market sweet spot</div>
+    </div>
+  </div>
+
+  <div class="section-head">Trend signals</div>
+  <div class="card">
+    <div class="trend-row">
+      <span class="trend-name">Google Trends</span>
+      <div class="trend-bar-bg"><div class="trend-bar-fill" style="width:85%;background:#378ADD;"></div></div>
+      <span class="trend-score">85</span>
+    </div>
+    <div class="trend-row">
+      <span class="trend-name">Pinterest</span>
+      <div class="trend-bar-bg"><div class="trend-bar-fill" style="width:91%;background:#D4537E;"></div></div>
+      <span class="trend-score">91</span>
+    </div>
+    <div class="trend-row">
+      <span class="trend-name">Social / runway</span>
+      <div class="trend-bar-bg"><div class="trend-bar-fill" style="width:93%;background:#1D9E75;"></div></div>
+      <span class="trend-score">93</span>
+    </div>
+    <div class="trend-row">
+      <span class="trend-name">Amazon demand</span>
+      <div class="trend-bar-bg"><div class="trend-bar-fill" style="width:80%;background:#EF9F27;"></div></div>
+      <span class="trend-score">80</span>
+    </div>
+  </div>
+
+  <div class="section-head">Fashion classification</div>
+  <div class="card">
+    <div class="card-label">Type</div>
+    <p>Primarily <strong>seasonal</strong> (Fall/Winter peak) but crossing into <strong>all-season</strong> territory in 2026 due to runway validation. Transitional spring layering is a strong secondary use case. Not a one-time purchase — repeat buyers are common.</p>
+  </div>
+
+  <div class="section-head">Market prediction</div>
+  <div class="two-col">
+    <div class="card" style="margin-bottom:0;">
+      <div class="card-label">Short term (3–6 months)</div>
+      <p>Demand will stay very high through summer 2026 as a transitional layer. Competition on Amazon is fierce — differentiation through fabric quality and fit is key.</p>
+    </div>
+    <div class="card" style="margin-bottom:0;">
+      <div class="card-label">Long term (1–2 years)</div>
+      <p>Quarter-zip is becoming a wardrobe staple similar to the crewneck. Runway backing from Chanel, Miu Miu, and Tory Burch signals it will outlast most micro-trends.</p>
+    </div>
+  </div>
+
+  <div class="section-head">Product origin & history</div>
+  <div class="card">
+    <p>The quarter-zip pullover originated in 1970s athletic and military performance wear, designed for easy on/off temperature regulation during training. It crossed into mainstream casualwear through golf and ski culture in the 1990s, popularized by brands like Patagonia and Polo Ralph Lauren. In 2024–2026 it was fully adopted by high fashion after Miu Miu, Chanel, and Tory Burch featured it on their runways, transforming it from a sportswear staple into a fashion-forward everyday item.</p>
+  </div>
+
+  <div class="section-head">Use cases</div>
+  <div class="card">
+    <div class="fab-row">
+      <div class="pill pill-gray">Office / business casual</div>
+      <div class="pill pill-gray">Airport travel wear</div>
+      <div class="pill pill-gray">Outdoor layering</div>
+      <div class="pill pill-gray">Gym / athleisure</div>
+      <div class="pill pill-gray">Weekend casual</div>
+      <div class="pill pill-gray">Date night (styled up)</div>
+      <div class="pill pill-gray">Hiking / trail walks</div>
+      <div class="pill pill-gray">Work from home</div>
+    </div>
+  </div>
+
+  <div class="section-head">Fabrics available in market</div>
+  <div class="card">
+    <div class="list-item"><span class="dot-gray"></span><div><span style="font-weight:500;">Fleece (Polyester)</span> — most common, warm, affordable, easy to source. Budget to mid-range price point.</div></div>
+    <div class="list-item"><span class="dot-gray"></span><div><span style="font-weight:500;">Cotton-Polyester blend</span> — soft hand feel, breathable, great for casual wear. Mid-range.</div></div>
+    <div class="list-item"><span class="dot-gray"></span><div><span style="font-weight:500;">Merino Wool</span> — premium, temperature-regulating, odor-resistant. High price point ($80–$200+).</div></div>
+    <div class="list-item"><span class="dot-gray"></span><div><span style="font-weight:500;">Cashmere / Cashmere blend</span> — luxury segment. Seen at Chanel and Guest in Residence. $100–$400+.</div></div>
+    <div class="list-item"><span class="dot-gray"></span><div><span style="font-weight:500;">Viscose / Polyamide blend</span> — popular for knit / ribbed styles. Lightweight, drapey, trendy aesthetic.</div></div>
+    <div class="list-item"><span class="dot-gray"></span><div><span style="font-weight:500;">Recycled Poly / Eco fabrics</span> — growing segment, appeals to sustainability-minded buyers.</div></div>
+  </div>
+
+  <div class="section-head">Amazon & off-Amazon presence</div>
+  <div class="card">
+    <div class="trend-row"><span class="trend-name" style="width:150px;">Amazon listings</span><span style="font-size:13px;color:var(--color-text-primary);">5,000–10,000+ SKUs across brands, styles, fabrics</span></div>
+    <div class="trend-row"><span class="trend-name" style="width:150px;">Top Amazon brands</span><span style="font-size:13px;color:var(--color-text-primary);">ATHMILE, PRETTYGARDEN, AUTOMET, ANRABESS, Amazon Essentials, LILLUSORY</span></div>
+    <div class="trend-row"><span class="trend-name" style="width:150px;">Lowest Amazon price</span><span style="font-size:13px;color:var(--color-text-primary);">~$15 (basic polyester fleece)</span></div>
+    <div class="trend-row"><span class="trend-name" style="width:150px;">Off-Amazon</span><span style="font-size:13px;color:var(--color-text-primary);">Very strong — Zara, H&M, Gap, Patagonia, Lululemon, Ralph Lauren, ASOS, Nordstrom</span></div>
+    <div class="trend-row" style="border:none;"><span class="trend-name" style="width:150px;">Price range</span><span style="font-size:13px;color:var(--color-text-primary);">$15 (budget) → $35 (mid) → $80–$400 (premium/luxury)</span></div>
+  </div>
+
+  <div class="section-head">Pros & cons</div>
+  <div class="two-col">
+    <div class="card" style="margin-bottom:0;">
+      <div class="card-label" style="color:#3B6D11;">Why choose this product</div>
+      <div class="list-item"><span class="dot-green"></span>2026 fashion moment — runway-validated trend with massive organic demand</div>
+      <div class="list-item"><span class="dot-green"></span>Versatile styling — works dressed up or down, office to outdoor</div>
+      <div class="list-item"><span class="dot-green"></span>Wide price range — accessible to all buyer segments</div>
+      <div class="list-item"><span class="dot-green"></span>High repeat purchase rate — buyers own multiple styles</div>
+      <div class="list-item"><span class="dot-green"></span>Strong gifting potential, especially in fall/winter</div>
+    </div>
+    <div class="card" style="margin-bottom:0;">
+      <div class="card-label" style="color:#A32D2D;">Negative points</div>
+      <div class="list-item"><span class="dot-red"></span>Extremely saturated on Amazon — very hard to stand out without differentiation</div>
+      <div class="list-item"><span class="dot-red"></span>Seasonal demand spikes (Fall/Winter) — slow summer months</div>
+      <div class="list-item"><span class="dot-red"></span>Race to the bottom pricing in budget segment</div>
+      <div class="list-item"><span class="dot-red"></span>Sizing inconsistency complaints are common in reviews</div>
+      <div class="list-item"><span class="dot-red"></span>Trend may plateau after 2026 peak if fashion moves on</div>
+    </div>
+  </div>
+
+  <div class="section-head">Amazon keywords</div>
+  <div class="card">
+    <div class="fab-row">
+      <span class="pill pill-blue">quarter zip pullover women</span>
+      <span class="pill pill-blue">womens half zip sweatshirt</span>
+      <span class="pill pill-blue">cropped quarter zip fleece</span>
+      <span class="pill pill-blue">ribbed knit quarter zip</span>
+      <span class="pill pill-blue">oversized quarter zip 2026</span>
+      <span class="pill pill-blue">women mock neck zip sweater</span>
+      <span class="pill pill-blue">Y2K zip pullover women</span>
+      <span class="pill pill-blue">cashmere quarter zip women</span>
+    </div>
+  </div>
+
+  <button class="ask-btn" onclick="sendPrompt('Give me a sourcing strategy for the Women Quarter Zip Pullover — what fabric, price point, and differentiation should I focus on to win on Amazon?')">Ask for sourcing & differentiation strategy ↗</button>
+  <button class="ask-btn" onclick="sendPrompt('What are the top competitor weaknesses for Women Quarter Zip Pullover on Amazon that I can exploit?')">Find competitor weaknesses to exploit ↗</button>
+</div>
